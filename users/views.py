@@ -43,7 +43,8 @@ def register(request):
         newUser = auth.authenticate(request, username=username, password=password)
         if newUser is not None:
             auth.login(request, newUser)
-            return render(request, 'index.html', {'username':username})
+            request.session['username'] = username
+            return render(request, 'index.html', {'username':request.session['username']})
         else:
             return render(request, 'account.html',
                           {'registForm': registerForm, 'errors': errors, 'loginForm': loginForm})
@@ -70,7 +71,8 @@ def login(request):
             user = auth.authenticate(request, username=username, password=password)
             if user and user.is_active:
                 auth.login(request, user)
-                return render(request, 'index.html', {'username': user.username})
+                request.session['username'] = user.username
+                return render(request, 'index.html', {'username': request.session['username']})
             else:
                 print(user)
                 return render(request, 'account.html',
