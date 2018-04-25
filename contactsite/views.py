@@ -17,13 +17,13 @@ def contact(request):
         Contact_Info = contact_info.objects.create(username=username, email=email, content=content)
         ContactForm.save()
 
-        if request.session['username'] != None:
+        if 'username' in request.session:
             return render(request, 'contact.html', {'contactForm': contactForm, 'success_true': True, 'username':request.session['username']})
         else:
             return render(request, 'contact.html', {'contactForm': contactForm, 'success_true': True,})
 
     else:
-        if request.session['username'] != None:
+        if 'username' in request.session:
             return render(request, 'contact.html', {'contactForm': contactForm, 'username':request.session['username']})
         else:
             return render(request, 'contact.html', {'contactForm': contactForm,})
@@ -31,7 +31,7 @@ def contact(request):
 
 def contact_initial(request):
     contactForm = ContactForm()
-    if request.session['username'] != None:
+    if 'username' in request.session:
         return render(request, 'contact.html', {'contactForm': contactForm, 'username':request.session['username']})
     else:
         return render(request, 'contact.html', {'contactForm':contactForm})
