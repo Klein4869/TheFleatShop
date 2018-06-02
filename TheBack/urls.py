@@ -21,5 +21,6 @@ urlpatterns = [
     path('', include('index_back.urls')),
     path('', include('users.urls')),
     path('', include('contactsite.urls')),
+    path('', include('product_site.urls')),
 ]
 

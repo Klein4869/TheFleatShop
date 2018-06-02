@@ -17,7 +17,7 @@ class ContactForm(forms.Form):
         required=True,
         label=u'电子邮箱',
         error_messages={'required':u'邮箱是必填项'},
-        widget=forms.EmailInput(
+        widget=forms.TextInput(
             attrs={
                 'placeholder':u'电子邮箱',
             }
@@ -35,3 +35,7 @@ class ContactForm(forms.Form):
         ),
         max_length=300,
     )
+
+    username.widget.attrs.update({'style': 'border-style: groove'})
+    email.widget.attrs.update({'style': 'width: 650px; height: 52px; border-style: groove'})
+    content.widget.attrs.update({'style': 'border-style: groove'})
