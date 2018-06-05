@@ -39,6 +39,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 $('html,body').animate({scrollTop: $(this.hash).offset().top}, 900);
             });
         });
+        function emailcheck(){
+            var x = document.getElementById('id_email').value;
+            if (email.length <= 3){
+                alert('邮箱不合法 | The email address is not valid!');
+                window.reload();
+            }
+            for (var i = 0; i < email.length; i++) {
+                if (email[i] == '@') {
+                    break;
+                }
+                if (i == email.length - 2) {
+                    alert('邮箱不合法 | The email address is not valid!');
+                    window.reload();
+                }
+            }
+            alert("提交成功!");
+        }
     </script>
 </head>
 <body>
