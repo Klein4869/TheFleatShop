@@ -39,11 +39,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 $('html,body').animate({scrollTop: $(this.hash).offset().top}, 900);
             });
         });
+        
         function emailcheck(){
-            var x = document.getElementById('id_email').value;
+            var email = document.getElementById('id_email').value;
             if (email.length <= 3){
-                alert('邮箱不合法 | The email address is not valid!');
-                window.reload();
+                document.getElementById("id_email").style.display="block";
+                document.getElementById("id_email").innerHTML="邮箱不合法";
+                document.getElementById("id_email").style.color=
             }
             for (var i = 0; i < email.length; i++) {
                 if (email[i] == '@') {
@@ -51,10 +53,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                 }
                 if (i == email.length - 2) {
                     alert('邮箱不合法 | The email address is not valid!');
-                    window.reload();
                 }
             }
-            alert("提交成功!");
+            alert("提交成功! | Submit successfully!");
         }
     </script>
 </head>
@@ -785,7 +786,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         {{ registForm.re_password }}
                     </div>
                     <div class="address new">
-                        <input type="submit" value="提交">
+                        <input type="submit" value="提交" onclick="emailcheck()">
                     </div>
                 </form>
             </div>
